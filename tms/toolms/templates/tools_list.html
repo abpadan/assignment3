@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Tools{% endblock title %}
+
+{% block content %}
+<div class="jumbotron">
+  <h1 class="display-4">Tool listing</h1>
+  <p class="lead"><a class="navbar-brand" href="{% url 'tools_new' %}">Create tool</a></p>
+</div>
+{% for tool in object_list %}
+{% if tool.requested and tool.owner == user %}
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+  Tool with id={{tool.id}} being requested.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endif %}
+{% endfor %}
+{% for tool in object_list %}
+<div class="card">
+  <div class="card-header">
+    <span class="font-muted">id: {{ tool.id }} | </span>
+    <span class="font-muted">Name: {{ tool.name }} | </span>
+    <span class="font-muted">Manufacturer: {{ tool.manufacturer }} | </span>
+    <span class="font-muted">Available: {{ tool.available }} | </span>
+    <span class="font-muted-">Type: {{ tool.type }} | </span> 
+    <span class="font-muted-">Owner: {{ tool.owner }}</span> |
+    <span class="font-muted-">Requested: {{ tool.requested }}</span>
+  </div>
+  <div class="card-body">
+    <span class="font-muted">Notes: {{ tool.notes }}</span>
+    <p>{{ client.notes }}</p>
+    {% if user.is_authenticated and tool.owner == user or user.is_superuser %}
+    <a href="{% url 'tools_edit' tool.pk %}">Edit</a> |
+    <a href="{% url 'tools_delete' tool.pk %}">Delete</a> |
+    {% endif %}
+    {% if user.is_authenticated and tool.owner != user and not tool.available|stringformat:"s" == "No" and not tool.requested or user.is_superuser %}
+    <a href="{% url 'tools_request' tool.pk %}">Request</a>
+    {% endif %}
+  </div>
+</div>
+<br />
+{% endfor %}
+{% endblock content %}

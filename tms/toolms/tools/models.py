@@ -3,6 +3,7 @@ from django.db import models
 
 from available.models import Available
 from tooltype.models import ToolType
+from django.urls import reverse
 
 
 class Tool(models.Model):
@@ -23,5 +24,10 @@ class Tool(models.Model):
         on_delete=models.CASCADE,
     )
 
+    requested = models.BooleanField(default=False)
+
     def __str__(self):
         return str(self.name)
+
+    def get_absolute_url(self):
+        return reverse('tools_list')

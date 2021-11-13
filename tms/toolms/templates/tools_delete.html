@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Delete tool</h1>
+<form action="" method="post">{% csrf_token %}
+  <p>Are you sure you want to delete this item?</p>
+  <div class="card">
+    <div class="card-header">
+      <span class="font-muted">id: {{ tool.id }} | </span>
+      <span class="font-muted">Name: {{ tool.name }} | </span>
+      <span class="font-muted">Manufacturer: {{ tool.manufacturer }} | </span>
+      <span class="font-muted">Available: {{ tool.available }} | </span>
+      <span class="font-muted-">Type: {{ tool.type }} | </span> 
+      <span class="font-muted-">Owner: {{ tool.owner }}</span>
+    </div>
+  </div>
+  <p></p>
+  <button class="btn btn btn-danger" type="submit">Confirm</button>
+</form>
+{% endblock content %}
+

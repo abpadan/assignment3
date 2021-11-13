@@ -3,4 +3,4 @@ from django.db import models
 
 
 class CustomUser(AbstractUser):
-    cell_phone = models.CharField(max_length=50, default=' ', null=True, blank=True)
+    email = models.CharField(max_length=100, default=' ', null=True, blank=True)
