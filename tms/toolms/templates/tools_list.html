@@ -35,7 +35,7 @@
     <a href="{% url 'tools_edit' tool.pk %}">Edit</a> |
     <a href="{% url 'tools_delete' tool.pk %}">Delete</a> |
     {% endif %}
-    {% if user.is_authenticated and tool.owner != user and not tool.available|stringformat:"s" == "No" and not tool.requested or user.is_superuser %}
+    {% if user.is_authenticated and tool.owner != user and not tool.available|stringformat:"s" == "No" and not tool.requested and not user.is_superuser %}
     <a href="{% url 'tools_request' tool.pk %}">Request</a>
     {% endif %}
   </div>
