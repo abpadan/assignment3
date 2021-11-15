@@ -4,6 +4,8 @@ This is a home improvement tool sharing application that is used for ISQA 8210 a
 
 **Local**
     
+    git clone git@github.com:abpadan/assignment3.git
+    cd assignment3/tms/toolms/
     pip3 install -r requirements.txt
     python3 manage.py makemigrations
     python3 manage.py migrate
