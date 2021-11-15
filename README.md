@@ -1,6 +1,6 @@
 # assignment3
 
-This is a home improvement tool sharing application that is used for ISQA 8210 assignment3. This application uses mailgun. You'll need your own credentials to send emails.
+This is a home improvement tool sharing application that is used for ISQA 8210 assignment3. This application uses mailgun. You'll need your own credentials to send emails. Adding API information is done in https://github.com/abpadan/assignment3/blob/main/tms/toolms/tools/views.py within lines 39-40. 
 
 **Local**
     
